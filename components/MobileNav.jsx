@@ -3,6 +3,9 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
+import { DialogTitle } from "@radix-ui/react-dialog"; // Import DialogTitle
+import { DialogDescription } from "@radix-ui/react-dialog"; // Import DialogDescription
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"; // Import VisuallyHidden
 const links = [
   {
     name: "home",
@@ -27,12 +30,24 @@ const links = [
 ];
 const MobileNav = () => {
   const pathname = usePathname();
+
   return (
     <Sheet>
       <SheetTrigger className="flex justify-center items-center">
         <CiMenuFries className="text-[32px] text-accent" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">
+        {/* DialogTitle wrapped in VisuallyHidden for screen reader accessibility */}
+        <VisuallyHidden>
+          <DialogTitle>Mobile Navigation</DialogTitle>
+        </VisuallyHidden>
+        {/* DialogDescription for screen reader description */}
+        <VisuallyHidden>
+          <DialogDescription>
+            Here you can find the navigation links for the mobile version of the
+            website.
+          </DialogDescription>
+        </VisuallyHidden>
         {/*logo*/}
         <div className="mt-32 mb-40 text-center text-2xl">
           <Link href="/">
