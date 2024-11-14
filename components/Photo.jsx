@@ -29,8 +29,6 @@ function Photo() {
             fill
             alt=""
             className="object-container"
-            /* width={498} // Explicit width
-            height={498} // Explicit height */
           />
         </motion.div>
         {/* circles */}
