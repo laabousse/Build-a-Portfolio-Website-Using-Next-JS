@@ -18,14 +18,18 @@ module.exports = {
       xl: "1200px",
     },
     fontFamily: {
-      primary: "--font-jetbrainsMono",
+      primary: "var(--font-jetbrainsMono)",
     },
     extend: {
       colors: {
-        primary: "#1c1c22",
+        primary: "#1c1c22", // Dark neutral, retains the base dark background.
         accent: {
-          DEFAULT: "#00ff99",
-          hover: "#00e187",
+          DEFAULT: "#6a0dad", // Royal purple for vibrant highlights.
+          hover: "#8a2be2", // Lighter and more luminous purple for hover effects.
+        },
+        neutral: {
+          light: "#b5a7d8", // Soft lavender for subtle accents or outlines.
+          dark: "#4b0082", // Deep indigo for secondary or text elements.
         },
       },
       borderRadius: {

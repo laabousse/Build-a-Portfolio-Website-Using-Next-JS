@@ -3,23 +3,27 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --radius: 12px;
+  }
   body {
     @apply font-primary bg-primary text-white leading-loose;
   }
 
   h1 {
-    @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
+    @apply text-[40px] xl:text-[64px] leading-[1.2] font-semibold;
   }
   h2 {
-    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
+    @apply text-[32px] xl:text-[40px] leading-[1.2] font-semibold;
   }
   h3 {
-    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+    @apply text-[18px] xl:text-[20px] leading-[1.2] font-semibold;
   }
   .text-outline {
     -webkit-text-stroke: 1px #ffffff;
   }
+
   .text-outline-hover {
-    -webkit-text-stroke: 1px #00ff99;
+    -webkit-text-stroke: 1px #8a2be2;
   }
 }
