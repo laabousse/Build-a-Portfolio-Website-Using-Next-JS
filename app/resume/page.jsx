@@ -1,12 +1,24 @@
 "use client";
-import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
+import {
+  FaHtml5,
+  FaCss3,
+  FaJs,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
+  FaAws,
+  FaPython,
+  FaJava,
+  FaDatabase,
+  FaDocker,
+} from "react-icons/fa";
 import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
 
 // about data
 const about = {
   title: "About me",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, temporibus.",
+    "I am a hard working, honest individual. I am a good timekeeper, always wiling to learn new skills. I am friendly, helpful and polite. I am able to work independently in busy environments and also within a team setting. I am outgoing and tactful, and able to listen effectively when solving problems.",
   info: [
     {
       fieldname: "Name",
@@ -18,7 +30,7 @@ const about = {
     },
     {
       fieldname: "Experience",
-      fieldvalue: "12+ Years",
+      fieldvalue: "4+ Years",
     },
     {
       fieldname: "Skype",
@@ -48,37 +60,37 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My experience",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, temporibus.",
+    "My career spans education, web development, and leadership roles. I've taught Python, worked on freelance web projects, and led the Liaison Department at a university. This diverse experience has honed my teaching, technical, and leadership skills, equipping me with a versatile professional toolkit.",
   items: [
     {
-      company: "Tech Solutions Inc.",
-      position: "Full Stack Developer",
-      duration: "2022-Present",
+      company: "Al-irfan private school, Morocco",
+      position: "Python teacher",
+      duration: "2020-2022",
     },
     {
-      company: "Web Design Studio",
-      position: "Frontend Developer intern",
-      duration: "summer 2021",
-    },
-    {
-      company: "E-commerce Startup",
+      company: "iziproteine Agadir.",
       position: "Freelance web Developer",
-      duration: "2020 - 2021",
+      duration: "Summer - 2021",
     },
     {
-      company: "Tech Academy",
-      position: "Teaching Assistant",
-      duration: "2019 - 2020",
+      company: "Freelance ilo-afou",
+      position: "Freelance web Developer",
+      duration: "Summer - 2021",
     },
     {
-      company: "Digital Agency",
-      position: "UI/UX Designer",
-      duration: "2018 - 2019",
-    },
-    {
-      company: "Software development Firm",
-      position: "Junior Developer",
+      company: "ICEA / Wuhan University of Technology",
+      position: "Head of Liaison Department",
       duration: "2017 - 2018",
+    },
+    {
+      company: "International University of Agadir - Morocco",
+      position: "Organizing Committee of TEDxUniversiapolis",
+      duration: " December - 2014",
+    },
+    {
+      company: "AMANNET",
+      position: "Internship Web de",
+      duration: "Summer - 2014",
     },
   ],
 };
@@ -88,37 +100,22 @@ const education = {
   icon: "/assets/resume/cap.svg",
   title: "My education",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, temporibus.",
+    "My academic journey in computer science encompasses a Bachelor's in Computer Engineering, a Master's in Information Security, and an ongoing PhD in Images processing. This diverse education has provided me with a comprehensive understanding of technology, from foundational concepts to advanced cybersecurity and cutting-edge research.",
   items: [
     {
-      institution: "Online course Platform",
-      degree: "Full Stack Web Developer bootcamp",
-      duration: "2023",
+      institution: "Wuhan University of Technology",
+      degree: "PhD / Images processing",
+      duration: "2017 - present",
     },
     {
-      institution: "Codeacademy",
-      degree: "Front-end Track",
-      duration: "2022",
+      institution: "Wuhan University of Technology",
+      degree: "Master / Information Security",
+      duration: "2015 - 2017",
     },
     {
-      institution: "Online course",
-      degree: "Programming course",
-      duration: "2020 - 2021",
-    },
-    {
-      institution: "Tech Institute",
-      degree: "Certified Web Developer",
-      duration: "2019",
-    },
-    {
-      institution: "Design School",
-      degree: "Diploma in Graphic Design",
-      duration: "2016 - 2018",
-    },
-    {
-      institution: "Community College",
-      degree: "Associate degree in Computer Science",
-      duration: "2014 - 2016",
+      institution: "International University of Agadir",
+      degree: "Bachelor / Computer engineering",
+      duration: "2011 - 2014",
     },
   ],
 };
@@ -127,7 +124,7 @@ const education = {
 const skills = {
   title: "My skills",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, explicabo.",
+    "I have experience in web development, cloud technologies, and system administration, with strong skills in research, problem-solving, and project planning. I'm highly adaptable and effective in tackling diverse technical challenges and delivering results.",
   skillList: [
     {
       icon: <FaHtml5 />,
@@ -156,6 +153,26 @@ const skills = {
     {
       icon: <FaNodeJs />,
       name: "Node.js",
+    },
+    {
+      icon: <FaGithub />,
+      name: "Github Repository",
+    },
+    {
+      icon: <FaAws />,
+      name: "AWS Cloud Infrastructure",
+    },
+    {
+      icon: <FaDocker />,
+      name: "Docker",
+    },
+    {
+      icon: <FaPython />,
+      name: "Python",
+    },
+    {
+      icon: <FaDatabase />,
+      name: "SQL Server 2008, MySQL, SQLite",
     },
   ],
 };
