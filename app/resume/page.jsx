@@ -88,8 +88,8 @@ const experience = {
       duration: " December - 2014",
     },
     {
-      company: "AMANNET",
-      position: "Internship Web de",
+      company: "AMANNET Inc",
+      position: "Internship Web Developement",
       duration: "Summer - 2014",
     },
   ],

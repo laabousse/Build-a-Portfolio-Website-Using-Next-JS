@@ -8,29 +8,15 @@ const services = [
     num: "01",
     title: "Web Development",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Evenietc.",
-    href: "",
+      "Building responsive and user-friendly websites with modern web technologies. From front-end design to back-end development, I create tailored solutions to meet your business needs.",
+    href: "/contact",
   },
   {
     num: "02",
-    title: "UI/UX Design",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Evenietc.",
-    href: "",
-  },
-  {
-    num: "03",
     title: "Logo Design",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Evenietc.",
-    href: "",
-  },
-  {
-    num: "04",
-    title: "SEO",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Evenietc.",
-    href: "",
+      "Creating unique and memorable logos that reflect your brand's identity. I combine creativity and design principles to craft logos that stand out and leave a lasting impression.",
+    href: "/contact",
   },
 ];
 const Services = () => {

@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
 import {
   Select,
   SelectContent,
@@ -13,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const info = [
   {
@@ -28,12 +31,65 @@ const info = [
   {
     icons: <FaMapMarkerAlt />,
     title: "Address",
-    description: "Code corner Tech town 1337 Avenue",
+    description: "XIANG SHAN Street, JINGKOU District, ZHENGJIAN City, CHINA",
   },
 ];
-import { motion } from "framer-motion";
 
 const Contact = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [service, setService] = useState("");
+  const [message, setMessage] = useState("");
+
+  const resetForm = () => {
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPhone("");
+    setService("");
+    setMessage("");
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Basic form validation
+    if (!firstName || !lastName || !email || !phone || !service || !message) {
+      toast.error("Please fill out all fields");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phone,
+          service,
+          message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        resetForm();
+      } else {
+        toast.error(data.message || "Failed to send message");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("An error occurred while sending the message");
+    }
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -47,30 +103,54 @@ const Contact = () => {
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+            >
               <h3 className="text-4xl text-accent">Let's work together</h3>
               <p className="text-neutral-light">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-                totam possimus consequatur et eligendi!
+                Whether you have a project in mind or just want to collaborate,
+                I'd love to hear from you. Let's bring your ideas to life!
               </p>
               {/* input fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input
+                  type="text"
+                  placeholder="Firstname"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+                <Input
+                  type="text"
+                  placeholder="Lastname"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+                <Input
+                  type="email"
+                  placeholder="Email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <Input
+                  type="tel"
+                  placeholder="Phone number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
               </div>
               {/*select */}
-              <Select>
+              <Select value={service} onValueChange={setService}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="est">Web Development</SelectItem>
-                    <SelectItem value="cst">UI/UX Design</SelectItem>
-                    <SelectItem value="mst">Logo Design</SelectItem>
+                    <SelectItem value="Web Development">
+                      Web Development
+                    </SelectItem>
+                    <SelectItem value="Logo Design">Logo Design</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -78,15 +158,17 @@ const Contact = () => {
               <Textarea
                 className="h-[200px]"
                 placeholder="type your message here."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
               />
               {/* submit button */}
-              <Button size="md" className="max-w-40">
+              <Button type="submit" size="md" className="max-w-40">
                 Send message
               </Button>
             </form>
           </div>
           {/* info */}
-          <div className="flex-1 flex items-center xl:justify-end order=1 xl:order-none mb-8 xl:mb-0">
+          <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
             <ul className="flex flex-col gap-10">
               {info.map((item, index) => {
                 return (
