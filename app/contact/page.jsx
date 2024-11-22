@@ -35,24 +35,36 @@ const info = [
   },
 ];
 
-const Contact = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [service, setService] = useState("");
-  const [message, setMessage] = useState("");
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
 
   const resetForm = () => {
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPhone("");
-    setService("");
-    setMessage("");
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: "",
+    });
   };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { firstName, lastName, email, phone, service, message } = formData;
 
     // Basic form validation
     if (!firstName || !lastName || !email || !phone || !service || !message) {
@@ -66,14 +78,7 @@ const Contact = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email,
-          phone,
-          service,
-          message,
-        }),
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
@@ -95,13 +100,13 @@ const Contact = () => {
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+        transition: { delay: 0.4, duration: 0.4, ease: "easeIn" },
       }}
       className="py-6"
     >
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
-          {/* form */}
+          {/* Form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
             <form
               onSubmit={handleSubmit}
@@ -112,35 +117,44 @@ const Contact = () => {
                 Whether you have a project in mind or just want to collaborate,
                 I'd love to hear from you. Let's bring your ideas to life!
               </p>
-              {/* input fields */}
+              {/* Input Fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input
                   type="text"
+                  name="firstName"
                   placeholder="Firstname"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  value={formData.firstName}
+                  onChange={handleChange}
                 />
                 <Input
                   type="text"
+                  name="lastName"
                   placeholder="Lastname"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
+                  value={formData.lastName}
+                  onChange={handleChange}
                 />
                 <Input
                   type="email"
+                  name="email"
                   placeholder="Email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={handleChange}
                 />
                 <Input
                   type="tel"
+                  name="phone"
                   placeholder="Phone number"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  value={formData.phone}
+                  onChange={handleChange}
                 />
               </div>
-              {/*select */}
-              <Select value={service} onValueChange={setService}>
+              {/* Select */}
+              <Select
+                value={formData.service}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, service: value })
+                }
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
@@ -154,41 +168,38 @@ const Contact = () => {
                   </SelectGroup>
                 </SelectContent>
               </Select>
-              {/* textarea */}
+              {/* Textarea */}
               <Textarea
                 className="h-[200px]"
-                placeholder="type your message here."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                name="message"
+                placeholder="Type your message here."
+                value={formData.message}
+                onChange={handleChange}
               />
-              {/* submit button */}
+              {/* Submit Button */}
               <Button type="submit" size="md" className="max-w-40">
                 Send message
               </Button>
             </form>
           </div>
-          {/* info */}
+          {/* Info */}
           <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
             <ul className="flex flex-col gap-10">
-              {info.map((item, index) => {
-                return (
-                  <li key={index} className="flex items-center gap-6">
-                    <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
-                      <div className="text-[28px]">{item.icons}</div>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-neutral-light">{item.title}</p>
-                      <h3 className="text-xl">{item.description}</h3>
-                    </div>
-                  </li>
-                );
-              })}
+              {info.map((item, index) => (
+                <li key={index} className="flex items-center gap-6">
+                  <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
+                    <div className="text-[28px]">{item.icons}</div>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-neutral-light">{item.title}</p>
+                    <h3 className="text-xl">{item.description}</h3>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </div>
     </motion.section>
   );
-};
-
-export default Contact;
+}

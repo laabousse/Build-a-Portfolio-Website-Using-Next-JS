@@ -1,65 +1,53 @@
-import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import mailgun from "mailgun-js";
 
-export async function POST(request) {
+const DOMAIN = process.env.MAILGUN_DOMAIN;
+const mg = mailgun({ apiKey: process.env.MAILGUN_API_KEY, domain: DOMAIN });
+
+export async function POST(req) {
   try {
-    const data = await request.json();
-    const { firstName, lastName, email, phone, service, message } = data;
+    // Parse request body
+    const { firstName, lastName, email, phone, service, message } =
+      await req.json();
 
-    // Hotmail configuration
-    const transporter = nodemailer.createTransport({
-      host: "smtp.office365.com",
-      port: 587,
-      secure: false,
-      requireTLS: true,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-      logger: true, // Enable logging for debugging
-    });
-
-    // Log connection status
-    try {
-      await transporter.verify();
-      console.log("Server is ready to take our messages");
-    } catch (verifyError) {
-      console.error("Verification error:", verifyError);
-      throw verifyError;
+    // Validate required fields
+    if (!firstName || !lastName || !email || !phone || !service || !message) {
+      return new Response(
+        JSON.stringify({ error: "All fields are required." }),
+        {
+          status: 400,
+        }
+      );
     }
 
-    const mailOptions = {
-      from: {
-        name: "Portfolio Contact Form",
-        address: process.env.EMAIL_USER,
-      },
-      to: process.env.EMAIL_USER,
-      subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-      html: `
-        <h3>Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Service:</strong> ${service}</p>
-        <p><strong>Message:</strong> ${message}</p>
+    // Prepare email data
+    const data = {
+      from: `${firstName} ${lastName} <${email}>`,
+      to: "laabousse@gmail.com", // Replace with your recipient email address
+      subject: `New Contact Form Submission - ${service}`,
+      text: `
+        You have a new contact form submission:
+
+        Name: ${firstName} ${lastName}
+        Email: ${email}
+        Phone: ${phone}
+        Service: ${service}
+
+        Message:
+        ${message}
       `,
     };
 
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Message sent: %s", info.messageId);
+    // Send email
+    await mg.messages().send(data);
 
-    return NextResponse.json(
-      { message: "Email sent successfully" },
+    return new Response(
+      JSON.stringify({ message: "Email sent successfully." }),
       { status: 200 }
     );
   } catch (error) {
-    console.error("Email error:", error);
-
-    // More detailed error message
-    const errorMessage = error.response
-      ? `Email error: ${error.response}`
-      : `Email error: ${error.message}`;
-
-    return NextResponse.json({ message: errorMessage }, { status: 500 });
+    console.error("Mailgun Error:", error);
+    return new Response(JSON.stringify({ error: "Error sending email." }), {
+      status: 500,
+    });
   }
 }

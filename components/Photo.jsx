@@ -24,11 +24,13 @@ function Photo() {
         >
           <Image
             src="/assets/photo.png"
-            priority
+            priority={true}
             quality={100}
             fill
-            alt=""
-            className="object-container"
+            sizes="(max-width: 768px) 298px, 498px"
+            alt="Profile photo"
+            className="object-contain"
+            loading="eager"
           />
         </motion.div>
         {/* circles */}
