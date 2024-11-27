@@ -17,17 +17,17 @@ const footerLinks = [
     links: [
       {
         name: "LinkedIn",
-        path: "https://linkedin.com/in/yourusername",
+        path: "https://linkedin.com/in/laabousse",
         icon: <FaLinkedin className="text-lg" />,
       },
       {
         name: "GitHub",
-        path: "https://github.com/yourusername",
+        path: "https://github.com/laabousse",
         icon: <FaGithub className="text-lg" />,
       },
       {
         name: "Twitter",
-        path: "https://twitter.com/yourusername",
+        path: "https://twitter.com/ilaabousse",
         icon: <FaTwitter className="text-lg" />,
       },
     ],
