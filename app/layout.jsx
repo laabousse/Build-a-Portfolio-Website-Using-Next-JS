@@ -6,6 +6,7 @@ import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
 import { Toaster } from "sonner";
 import Footer from "@/components/Footer";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -14,20 +15,35 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Laabousse - Portfolio",
+  metadataBase: new URL("https://laabousse.com"),
+  title: {
+    default: "Laabousse - Portfolio",
+    template: "%s | Laabousse",
+  },
   description:
-    "Showcasing expertise in Web development, this portfolio highlights a curated collection of projects, achievements and professional experiences. Explore innovative solutions, creative designs, and a commitment to excellence.",
+    "Web Developer specializing in modern web technologies and information security",
+  keywords: ["web development", "react", "next.js", "portfolio"],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://laabousse.com",
+    title: "Laabousse - Portfolio",
+    description: "Web Developer Portfolio",
+    siteName: "Laabousse Portfolio",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={jetbrainsMono.variable}>
-        <Header />
-        <StairTransition />
-        <PageTransition>{children}</PageTransition>
-        <Toaster position="top-right" richColors />
-        <Footer />
+        <ErrorBoundary>
+          <Header />
+          <StairTransition />
+          <PageTransition>{children}</PageTransition>
+          <Toaster position="top-right" richColors />
+          <Footer />
+        </ErrorBoundary>
       </body>
     </html>
   );

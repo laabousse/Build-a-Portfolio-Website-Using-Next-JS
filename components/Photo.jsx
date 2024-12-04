@@ -25,12 +25,14 @@ function Photo() {
           <Image
             src="/assets/photo.png"
             priority={true}
-            quality={100}
+            quality={85}
             fill
-            sizes="(max-width: 768px) 298px, 498px"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt="Profile photo"
             className="object-contain"
             loading="eager"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
           />
         </motion.div>
         {/* circles */}
