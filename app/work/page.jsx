@@ -71,7 +71,7 @@ const projects = [
       { name: "Tailwind CSS" },
       { name: "Clerk" },
     ],
-    image: "/assets/work/thumb8.png",
+    image: "/assets/work/thumb8.PNG",
     live: "https://morocco-grove-naturals.vercel.app/",
     github: "https://github.com/laabousse/Morocco-Grove-Naturals",
   },
@@ -107,7 +107,7 @@ const projects = [
       { name: "Tailwind CSS" },
       { name: "Clerk" },
     ],
-    image: "/assets/work/thumb9.png",
+    image: "/assets/work/thumb9.PNG",
     live: "https://ecommerce-trendy.vercel.app/",
     github:
       "https://github.com/laabousse/E-Commerce-Platform-with-Next.js-Sanity-and-Stripe",
