@@ -18,6 +18,13 @@ const services = [
       "Creating unique and memorable logos that reflect your brand's identity. I combine creativity and design principles to craft logos that stand out and leave a lasting impression.",
     href: "/contact",
   },
+  {
+    num: "03",
+    title: "IT Support",
+    description:
+      "Providing reliable IT support and solutions to ensure your systems run smoothly. From troubleshooting to network management, I offer comprehensive services to keep your business operational.",
+    href: "/contact",
+  },
 ];
 const Services = () => {
   return (

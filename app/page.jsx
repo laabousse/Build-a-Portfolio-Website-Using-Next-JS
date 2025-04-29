@@ -11,15 +11,15 @@ const Home = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-5 xl:pb-10">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl">Web Developer</span>
+            <span className="text-xl">Web Developer / IT Support</span>
             <h1 className="h1 mb-6">
               Hello I'm <br />
               <span className="text-accent">Laabousse Idriss</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              I am a passionate and dedicated web developer with a background in
-              Information Security. I have experience working on various
-              projects for small startups.
+              I am a passionate and dedicated web developer / IT Support with a
+              background in Information Security. I have experience working on
+              various projects for small startups.
             </p>
             {/* button and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">

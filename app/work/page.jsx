@@ -23,20 +23,21 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 const projects = [
   {
     num: "01",
-    category: "Web Development",
-    title: "Create a Portfolio website",
+    category: "System Administration",
+    title: "Active Directory Home Lab",
     description:
-      "An innovative web development project showcasing responsive design and dynamic functionality. Built using HTML5, CSS3, JavaScript, and Bootstrap for seamless user experience, and powered by Firebase for robust backend integration.",
+      "This project provides step-by-step instructions for setting up a home lab with Active Directory using Oracle VirtualBox, including installing Windows Server 2019 as a Domain Controller and configuring Windows 10 clients to join the domain. Ideal for IT students and enthusiasts exploring AD in a virtual environment.",
     stack: [
-      { name: "Html 5" },
-      { name: "Css 3" },
-      { name: "JavaScript" },
-      { name: "Bootstrap" },
-      { name: "Firebase" },
+      { name: "VirtualBox" },
+      { name: "Windows Server 2019" },
+      { name: "Windows 10" },
+      { name: "Active Directory" },
+      { name: "DNS" },
+      { name: "Group Policy Management" },
     ],
-    image: "/assets/work/thumb1.png",
-    live: "https://ilo-afou.web.app",
-    github: "",
+    image: "/assets/work/thumb3.png",
+    live: "",
+    github: "https://github.com/laabousse/Active-Directory-Home-Lab.git",
   },
   {
     num: "02",
@@ -58,24 +59,62 @@ const projects = [
   },
   {
     num: "03",
-    category: "System Administration",
-    title: "Active Directory Home Lab",
+    category: "Web Development",
+    title: "Create an E-commerce website",
     description:
-      "This project provides step-by-step instructions for setting up a home lab with Active Directory using Oracle VirtualBox, including installing Windows Server 2019 as a Domain Controller and configuring Windows 10 clients to join the domain. Ideal for IT students and enthusiasts exploring AD in a virtual environment.",
+      "A scalable and visually engaging e-commerce platform featuring real-time shopping cart updates, Stripe-powered payments, dynamic CMS-driven content, and a secure user experience with modern authentication methods.",
     stack: [
-      { name: "VirtualBox" },
-      { name: "Windows Server 2019" },
-      { name: "Windows 10" },
-      { name: "Active Directory" },
-      { name: "DNS" },
-      { name: "Group Policy Management" },
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "Sanity" },
+      { name: "Stripe" },
+      { name: "Tailwind CSS" },
+      { name: "Clerk" },
     ],
-    image: "/assets/work/thumb3.png",
-    live: "",
-    github: "https://github.com/laabousse/Active-Directory-Home-Lab.git",
+    image: "/assets/work/thumb8.png",
+    live: "https://morocco-grove-naturals.vercel.app/",
+    github: "https://github.com/laabousse/Morocco-Grove-Naturals",
   },
   {
     num: "04",
+    category: "Web Development",
+    title: "Create a Portfolio website",
+    description:
+      "An innovative web development project showcasing responsive design and dynamic functionality. Built using HTML5, CSS3, JavaScript, and Bootstrap for seamless user experience, and powered by Firebase for robust backend integration.",
+    stack: [
+      { name: "Html 5" },
+      { name: "Css 3" },
+      { name: "JavaScript" },
+      { name: "Bootstrap" },
+      { name: "Firebase" },
+    ],
+    image: "/assets/work/thumb1.png",
+    live: "https://ilo-afou.web.app",
+    github: "",
+  },
+  {
+    num: "05",
+    category: "Web Development",
+    title: "Create an E-commerce website",
+    description:
+      "A complete, modern e-commerce solution with advanced shopping features, responsive UI, secure authentication, and scalable architecture, built using Next.js, Sanity CMS, Stripe, and Tailwind CSS.",
+    stack: [
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "Sanity" },
+      { name: "Stripe" },
+      { name: "Zustand" },
+      { name: "Tailwind CSS" },
+      { name: "Clerk" },
+    ],
+    image: "/assets/work/thumb9.png",
+    live: "https://ecommerce-trendy.vercel.app/",
+    github:
+      "https://github.com/laabousse/E-Commerce-Platform-with-Next.js-Sanity-and-Stripe",
+  },
+
+  {
+    num: "06",
     category: "Web Development",
     title: "Front End Development Libraries Certification",
     description:
@@ -92,7 +131,7 @@ const projects = [
     github: "",
   },
   {
-    num: "05",
+    num: "07",
     category: "Web Design",
     title: "Responsive Web Design Certification",
     description:
@@ -103,7 +142,7 @@ const projects = [
     github: "",
   },
   {
-    num: "06",
+    num: "08",
     category: "JavaScript & Data Structures",
     title: "JavaScript Algorithms and Data Structures (Beta) Certification",
     description:
@@ -114,7 +153,7 @@ const projects = [
     github: "",
   },
   {
-    num: "07",
+    num: "09",
     category: "Full Stack Development",
     title: "Back End Development and APIs Certification",
     description:
@@ -189,7 +228,11 @@ const Work = () => {
               <div className="flex items-center gap-4">
                 {/* live project button */}
                 {project.live && (
-                  <Link href={project.live}>
+                  <Link
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
                         <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -205,7 +248,11 @@ const Work = () => {
 
                 {/* Github project button */}
                 {project.github && (
-                  <Link href={project.github}>
+                  <Link
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
                         <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">

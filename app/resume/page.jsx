@@ -33,10 +33,6 @@ const about = {
       fieldvalue: "4+ Years",
     },
     {
-      fieldname: "Skype",
-      fieldvalue: "live:laabousse",
-    },
-    {
       fieldname: "Nationality",
       fieldvalue: "Moroccan",
     },
