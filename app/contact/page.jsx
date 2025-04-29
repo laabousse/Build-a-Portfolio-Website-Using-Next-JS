@@ -165,6 +165,7 @@ export default function ContactPage() {
                       Web Development
                     </SelectItem>
                     <SelectItem value="Logo Design">Logo Design</SelectItem>
+                    <SelectItem value="IT Support">IT Support</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
