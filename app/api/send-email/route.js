@@ -22,7 +22,7 @@ export async function POST(req) {
     // Prepare email data
     const data = {
       from: `${firstName} ${lastName} <${email}>`,
-      to: "laabousse@gmail.com", // Replace with your recipient email address
+      to: "laabousse@gmail.com",
       subject: `New Contact Form Submission - ${service}`,
       text: `
         You have a new contact form submission:

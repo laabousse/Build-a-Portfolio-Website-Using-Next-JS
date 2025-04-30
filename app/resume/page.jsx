@@ -8,7 +8,6 @@ import {
   FaGithub,
   FaAws,
   FaPython,
-  FaJava,
   FaDatabase,
   FaDocker,
 } from "react-icons/fa";
@@ -38,7 +37,7 @@ const about = {
     },
     {
       fieldname: "Email",
-      fieldvalue: "idriss.laabousse@gmail.com",
+      fieldvalue: "idriss@laabousse.com",
     },
     {
       fieldname: "Freelance",
